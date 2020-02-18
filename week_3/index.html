@@ -25,6 +25,7 @@
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);
     </script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://uploads-ssl.webflow.com/img/webclip.png" rel="apple-touch-icon" />
 </head>
@@ -55,13 +56,17 @@
             <div class="hero-image-mask"><img src="https://uploads-ssl.webflow.com/5e42eca4d367c3445f0028d9/5e4b2f69c85c1425cb6b4cac_hero.jpg" srcset="https://uploads-ssl.webflow.com/5e42eca4d367c3445f0028d9/5e4b2f69c85c1425cb6b4cac_hero-p-500.jpeg 500w, https://uploads-ssl.webflow.com/5e42eca4d367c3445f0028d9/5e4b2f69c85c1425cb6b4cac_hero.jpg 794w" sizes="(max-width: 479px) 92vw, (max-width: 767px) 76vw, (max-width: 991px) 275.1875px, 360px" alt="" class="hero-image" /></div>
         </div>
     </header>
-    <div id="process" class="section">
+	<div class="section">
         <div class="w-container">
             <h2>Demo</h2>
             <div class="divider grey"></div>
-            <div>Video here</div>
+            <div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3ADGbGfttZA" allowfullscreen></iframe>
+			</div>
+
         </div>
     </div>
+	
     <div id="projects" class="section grey">
         <div class="w-container">
             <h2>Measuring DC motor output voltage using arduino</h2>
@@ -144,10 +149,17 @@
         <div class="w-container">
             <h2>Play music using <span class="text-span">tone()</span> function</h2>
             <div class="divider grey"></div>
+			<p>One of the following music will be played:</p>
+			<ul class="list">
+                <li class="list-item"><a href="https://github.com/robsoncouto/arduino-songs/blob/master/imperialmarch/imperialmarch.ino" target="_blank">Imperial March - Star Wars</a></li>
+                <li class="list-item-2"><a href="https://github.com/robsoncouto/arduino-songs/blob/master/gameofthrones/gameofthrones.ino" target="_blank">Game of Thrones</a></li>
+                <li class="list-item-3"><a href="https://github.com/robsoncouto/arduino-songs/blob/master/greensleeves/greensleeves.ino" target="_blank">Greensleves - Traditional English folk song</a></li>
+            </ul>
             <p>When the win conditions are met (input sensor value is 850 and above), the device will play a random music using tone() function.
-                <br/>This website has several compositions written for Arduino: <a href="https://dragaosemchama.com/en/2019/02/songs-for-arduino/">https://dragaosemchama.com/en/2019/02/songs-for-arduino/</a></p>
-            <p>Speaker is connected to A5 output.</p>
+            <br/>Music taken from this website that has several compositions written for Arduino: <a href="https://dragaosemchama.com/en/2019/02/songs-for-arduino/" target="_blank">https://dragaosemchama.com/en/2019/02/songs-for-arduino/</a></p>
+            <br/>
             <p>Link to the complete project could be found here:</p>
+			<p><a href="https://github.com/aiakovlev/PHYSCI-70/raw/master/week_3/rotate_till_green_project.zip" target="_blank">https://github.com/aiakovlev/PHYSCI-70/raw/master/week_3/rotate_till_green_project.zip</a><p/>
         </div>
     </div>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
