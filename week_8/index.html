@@ -52,6 +52,9 @@
 		<h2>Quantum Rover</h2>
           <h2>DEMO</h2>
           <div class="divider grey"></div>
+          <h2>Как тебе такое, Илон Маск?</h2>
+          <h2>How do you like THAT, Elon Musk?</h2>
+		  <br>
             <div class="embed-responsive embed-responsive-16by9">
 			  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ANICIAbCPIM" allowfullscreen></iframe>
 			</div>
@@ -60,12 +63,17 @@
 	<div class="section grey">
 		<h2>Sensor calibration</h2>
 		<div class="w-container">
+		<p>The set-up has 4 phototransistors (1080-1019-ND) serving as a direction setting inputs.</p>
+		<p>2 for forward/backward move and 2 for rotation of the rover.</p>
+		<p>IMPORTANT:</p>
+		<p>To trigger the sensor, UV laser pointer should be used. UV light makes the piece of paper to fluoresce producing intensive blue light.</p>
+		<p>The blue light intensity is enough to trigger the phototransistor output.</p>
 		  <div class="row">
 			<div class="col-md-6">
 			  <div class="thumbnail">
 				  <img src=".\sensor.jpg" alt="Lights" style="width:100%">
 				  <div class="caption">
-					<p>Phototransistor and white paper</p>
+					<p>Phototransistor and white paper envelope</p>
 				  </div>
 			  </div>
 			</div>
@@ -73,7 +81,7 @@
 			  <div class="thumbnail">
 				  <img src=".\sensor_laser.jpg" alt="Fjords" style="width:100%">
 				  <div class="caption">
-					<p>Laser pointer</p>
+					<p>UV Laser pointer shining on the paper envelope.</p>
 				  </div>
 			  </div>
 			</div>
@@ -83,11 +91,145 @@
 			  <div class="thumbnail">
 				  <img src=".\sensor reading.png" alt="Lights" style="width:100%">
 				  <div class="caption">
-					<p>Sensor reading</p>
+					<p>Sensor reading: value more that 10 triggers the direction inputs.</p>
 				  </div>
 			  </div>
 			</div>
 		  </div>
+        </div>
+    </div>
+	<div class="section">
+        <div class="w-container">
+		<h2>Adjusting Stepper Library</h2>
+          <div class="divider grey"></div>
+			<p>Two 28BYJ-48 unipolar stepper motors are used.</p>
+			<p>The default arduino Stepper library didn'w work well with this motot because of incorrect steps sequence declaration.</p>
+			<p>The following code in Stepper library has been adjusted to make this motor work</p>
+			<pre class="text-left"><code>
+switch (thisStep) {
+  case 0:  // 1010
+	digitalWrite(motor_pin_1, HIGH);
+	digitalWrite(motor_pin_2, LOW);
+	digitalWrite(motor_pin_3, HIGH);
+	digitalWrite(motor_pin_4, LOW);
+  break;
+  case 1:  // 0110
+	digitalWrite(motor_pin_1, LOW);
+	digitalWrite(motor_pin_2, HIGH);
+	digitalWrite(motor_pin_3, HIGH);
+	digitalWrite(motor_pin_4, LOW);
+  break;
+  case 2:  //0101
+	digitalWrite(motor_pin_1, LOW);
+	digitalWrite(motor_pin_2, HIGH);
+	digitalWrite(motor_pin_3, LOW);
+	digitalWrite(motor_pin_4, HIGH);
+  break;
+  case 3:  //1001
+	digitalWrite(motor_pin_1, HIGH);
+	digitalWrite(motor_pin_2, LOW);
+	digitalWrite(motor_pin_3, LOW);
+	digitalWrite(motor_pin_4, HIGH);
+  break;
+}
+			</code></pre>
+			<p>To this one:</p>
+			<pre class="text-left"><code>
+// CODE FOR 28BYJ-48 motor
+switch (thisStep) {
+  case 0:  // 1000
+	digitalWrite(motor_pin_1, HIGH);
+	digitalWrite(motor_pin_2, LOW);
+	digitalWrite(motor_pin_3, LOW);
+	digitalWrite(motor_pin_4, LOW);
+  break;
+  case 1:  // 0100
+	digitalWrite(motor_pin_1, LOW);
+	digitalWrite(motor_pin_2, HIGH);
+	digitalWrite(motor_pin_3, LOW);
+	digitalWrite(motor_pin_4, LOW);
+  break;
+  case 2:  //0010
+	digitalWrite(motor_pin_1, LOW);
+	digitalWrite(motor_pin_2, LOW);
+	digitalWrite(motor_pin_3, HIGH);
+	digitalWrite(motor_pin_4, LOW);
+  break;
+  case 3:  //0001
+	digitalWrite(motor_pin_1, LOW);
+	digitalWrite(motor_pin_2, LOW);
+	digitalWrite(motor_pin_3, LOW);
+	digitalWrite(motor_pin_4, HIGH);
+  break;
+}
+			</code></pre>
+			<h4><a href="./project_and_stepper_lib.zip" target="_blank">>>>Click here to donload the final code with the fixed library </a></h4>
+		  
+        </div>
+    </div>
+	
+	<div class="section grey">
+		<h2>Assembling the rover</h2>
+		<div class="w-container">
+			<div class="row">
+				
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (1).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+						<p>Connecting and testing general intups of the set-up.</p>
+					  </div>
+				  </div>
+				</div>
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (2).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+						<p>The breadboard is attached to the powerbank uning insulation tape.</p>
+					  </div>
+				  </div>
+				</div>
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (3).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+						<p>Sensor reading: value more that 10 triggers the direction inputs.</p>
+						<p>Wheels are attached to the motors' shafts</p>
+					  </div>
+				  </div>
+				</div>
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (4).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+						<p>Hot glue</p>
+					  </div>
+				  </div>
+				</div>
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (5).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+						<p>More hot glue</p>
+					  </div>
+				  </div>
+				</div>
+				<div class="col-md-12">
+				  <div class="thumbnail">
+					  <img src=".\img (7).jpg" alt="Lights" style="width:100%">
+					  <div class="caption">
+					  <p>Final design.</p>
+						<ul>
+						  <li><p>Power bank provides power supply to all motors. Arduino Nano is connected to a cumputer.</p></li>
+						  <li><p>ItsyBitsy used just for taking 5V pin from the power bank</p></li>
+						  <li><p>Phototransistor is connected via 1kOhm resistors.</p></li>
+						  <li><p>Arduino A0, A1, A3, A4 inputs read data from phototransistors.</p></li>
+						</ul>
+					  </div>
+				  </div>
+				</div>
+			</div>
+
         </div>
     </div>
 	
